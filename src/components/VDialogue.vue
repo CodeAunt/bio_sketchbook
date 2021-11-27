@@ -1,13 +1,13 @@
 <template>
   <div class="flex flex-row bg-white rounded-r-2xl"
        @click="handleClick">
-    <img src="/assets/svg/line.svg"
+    <img src="https://raw.githubusercontent.com/chaochaooo/Bio_Sketchbook/main/public/assets/svg/line.svg"
          class="pl-6">
     <div class="flex flex-col justify-between items-center">
       <div class="pt-6">
         <p class="dialogue"><span>Hello dear friend! Can you draw my outline ?</span></p>
       </div>
-      <img src="/assets/svg/len.svg"
+      <img src="https://raw.githubusercontent.com/chaochaooo/Bio_Sketchbook/main/public/assets/svg/len.svg"
            class="p-12">
     </div>
   </div>
@@ -38,7 +38,7 @@ export default {
   align-items: center;
   justify-content: center;
   color: white;
-  background-image: url(/assets/svg/dialogue.svg);
+  background-image: url(https://raw.githubusercontent.com/chaochaooo/Bio_Sketchbook/main/public/assets/svg/dialogue.svg);
   font-family: 'Mali', cursive;
 }
 </style>

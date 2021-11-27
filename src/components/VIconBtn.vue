@@ -16,7 +16,7 @@ export default {
   },
   computed: {
     src() {
-      return '/assets/svg/' + this.name + '.svg'
+      return 'https://raw.githubusercontent.com/chaochaooo/Bio_Sketchbook/main/public/assets/svg/' + this.name + '.svg'
     }
   },
   methods: {
