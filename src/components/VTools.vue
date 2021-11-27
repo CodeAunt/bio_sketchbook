@@ -99,6 +99,11 @@ export default {
         this.$refs['pencil'].$el.classList.add('-translate-y-5')
         this.$refs['brush'].$el.classList.remove('-translate-y-5')
         this.$refs['brush'].$el.classList.add('-translate-y-2')
+      } else if (toolName === 'eraser') {
+        this.$refs['brush'].$el.classList.remove('-translate-y-2')
+        this.$refs['brush'].$el.classList.add('-translate-y-5')
+        this.$refs['pencil'].$el.classList.remove('-translate-y-2')
+        this.$refs['pencil'].$el.classList.add('-translate-y-5')
       }
 
       this.$store.commit('setTool', toolName)
