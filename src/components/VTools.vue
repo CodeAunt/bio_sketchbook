@@ -113,7 +113,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .v-size-picker {
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.3), 0 4px 8px rgba(0, 0, 0, 0.3);
   border-radius: 2px;

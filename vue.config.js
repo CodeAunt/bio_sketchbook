@@ -1,3 +1,10 @@
 module.exports = {
-  publicPath: './'
+  publicPath: './',
+  css: {
+    loaderOptions: {
+      postcss: {
+        plugins: [require('tailwindcss'), require('autoprefixer')]
+      }
+    }
+  }
 }

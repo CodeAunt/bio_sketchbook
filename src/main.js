@@ -3,7 +3,7 @@ import paper from 'paper'
 import App from './App.vue'
 import store from './store'
 import VTooltip from 'v-tooltip'
-import './index.css'
+import 'tailwindcss/tailwind.css'
 
 paper.install(window)
 Vue.prototype.$store = store
