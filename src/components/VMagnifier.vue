@@ -5,7 +5,7 @@
            id="video"
            playsinline
            autoplay
-           class="video absolute right-0 bottom-0 object-cover"></video>
+           class="video absolute right-0 top-0 object-cover"></video>
   </div>
 </template>
 
