@@ -43,11 +43,7 @@ export default {
         if (deviceInfo.kind === 'videoinput') {
           option.text =
             deviceInfo.label || 'camera ' + (this.videoSelect.length + 1)
-          if (option.text === 'Back Camera') {
-            this.videoSelect.insertBefore(option, this.videoSelect.firstChild)
-          } else {
-            this.videoSelect.appendChild(option)
-          }
+          this.videoSelect.appendChild(option)
         }
       }
       this.selectors.forEach(function (select, selectorIndex) {
@@ -74,7 +70,9 @@ export default {
       }
       let videoSource = this.videoSelect.value
       let constraints = {
-        video: { deviceId: videoSource ? { exact: videoSource } : undefined }
+        video: {
+          facingMode: 'environment'
+        }
       }
       navigator.mediaDevices
         .getUserMedia(constraints)
