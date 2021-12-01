@@ -8,11 +8,12 @@
             id="canvas"
             class="w-full h-screen"
             resize></canvas>
-    <VDialogue class="absolute top-1/2 left-0 transform -translate-y-2/3 transition duration-300 ease-in-out"
+    <VDialogue class="absolute top-1/2 left-0 transform -translate-y-2/3 transition duration-500 ease-in-out -translate-x-44"
                ref="sidebar"
                @click="toggleSideBar"></VDialogue>
     <VContent class="absolute bottom-12"></VContent>
     <VNext class="absolute bottom-12 left-12"></VNext>
+    <VMagnifier class="absolute top-12 left-12"></VMagnifier>
   </div>
 </template>
 
@@ -21,13 +22,15 @@ import VHeader from '@/components/VHeader'
 import VDialogue from '@/components/VDialogue'
 import VContent from '@/components/VContent'
 import VNext from '@/components/VNext'
+import VMagnifier from '@/components/VMagnifier'
 import setup from '@/utils/setup'
 export default {
   components: {
     VHeader,
     VDialogue,
     VContent,
-    VNext
+    VNext,
+    VMagnifier
   },
   data() {
     return {
