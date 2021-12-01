@@ -43,7 +43,11 @@ export default {
         if (deviceInfo.kind === 'videoinput') {
           option.text =
             deviceInfo.label || 'camera ' + (this.videoSelect.length + 1)
-          this.videoSelect.appendChild(option)
+          if (option.text === 'Back Camera') {
+            this.videoSelect.insertBefore(option, this.videoSelect.firstChild)
+          } else {
+            this.videoSelect.appendChild(option)
+          }
         }
       }
       this.selectors.forEach(function (select, selectorIndex) {
@@ -69,7 +73,6 @@ export default {
         })
       }
       let videoSource = this.videoSelect.value
-      console.log(this.videoSelect)
       let constraints = {
         video: { deviceId: videoSource ? { exact: videoSource } : undefined }
       }
