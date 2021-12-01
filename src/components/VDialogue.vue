@@ -1,15 +1,15 @@
 <template>
   <div class="flex flex-row bg-white rounded-r-2xl"
-       ref="test"
-       @click="handleClick">
+       ref="test">
     <img src="https://raw.githubusercontent.com/chaochaooo/Bio_Sketchbook/main/public/assets/svg/line.svg"
          class="pl-6">
     <div class="flex flex-col justify-between items-center">
-      <div class="pt-6">
+      <div class="pt-6" @click="handleClick">
         <p class="dialogue"><span>{{ content }}</span></p>
       </div>
       <img src="https://raw.githubusercontent.com/chaochaooo/Bio_Sketchbook/main/public/assets/svg/len.svg"
-           class="p-12">
+           class="m-12"
+           @click="$emit('toggleMagnifier')">
     </div>
   </div>
 </template>

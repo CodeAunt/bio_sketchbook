@@ -8,12 +8,13 @@
             id="canvas"
             class="w-full h-screen"
             resize></canvas>
-    <VDialogue class="absolute top-1/2 left-0 transform -translate-y-2/3 transition duration-500 ease-in-out -translate-x-44"
+    <VDialogue class="absolute top-1/2 left-0 transform -translate-y-2/3 transition duration-500 ease-in-out"
                ref="sidebar"
-               @click="toggleSideBar"></VDialogue>
+               @click="toggleSideBar"
+               @toggleMagnifier="toggleMagnifier"></VDialogue>
     <VContent class="absolute bottom-12"></VContent>
     <VNext class="absolute bottom-12 left-12"></VNext>
-    <VMagnifier class="absolute top-12 left-12"></VMagnifier>
+    <VMagnifier ref="magnifier" class="absolute top-8 right-8 border-4 border-yellow-400 rounded-full transition duration-500 ease-in-out transform -translate-y-64"></VMagnifier>
   </div>
 </template>
 
@@ -47,6 +48,9 @@ export default {
   methods: {
     toggleSideBar() {
       this.$refs['sidebar'].$el.classList.toggle('-translate-x-44')
+    },
+    toggleMagnifier() {
+      this.$refs['magnifier'].$el.classList.toggle('-translate-y-64')
     }
   },
   computed: {
