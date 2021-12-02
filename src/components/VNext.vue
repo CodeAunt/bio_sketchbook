@@ -1,6 +1,6 @@
 <template>
   <div @click="handleClick">
-    <i class="transition duration-500 ease-in-out transform hover:-translate-y-3">
+    <i>
       <img src='https://raw.githubusercontent.com/chaochaooo/Bio_Sketchbook/main/public/assets/svg/next.svg'>
     </i>
   </div>

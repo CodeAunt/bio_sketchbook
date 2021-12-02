@@ -23,7 +23,8 @@ export default new Vuex.Store({
       shake: true
     },
     drawSession: {
-      step: 0
+      step: 0,
+      description: ''
     }
   },
   mutations: {
@@ -31,6 +32,9 @@ export default new Vuex.Store({
       if (state.drawSession.step < 3) {
         state.drawSession.step++
       }
+    },
+    setDescription(state, s) {
+      state.drawSession.description = s
     },
     setTool(state, toolName) {
       if (state.toolName && tools[state.toolName].onToggleOut) {
