@@ -14,7 +14,9 @@
                @toggleMagnifier="toggleMagnifier"></VDialogue>
     <VContent class="absolute bottom-12"></VContent>
     <VNext class="absolute bottom-12 left-12"></VNext>
-    <VMagnifier ref="magnifier" class="absolute top-8 right-8 border-4 border-yellow-400 rounded-full transition duration-500 ease-in-out transform -translate-y-64"></VMagnifier>
+    <VMagnifier ref="magnifier"
+                @click="toggleSideBar(); toggleMagnifier();"
+                class="absolute top-8 left-16 border-4 border-yellow-400 rounded-full transition duration-500 ease-in-out transform -translate-y-64"></VMagnifier>
   </div>
 </template>
 

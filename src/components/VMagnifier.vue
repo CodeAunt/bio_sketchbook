@@ -1,5 +1,6 @@
 <template>
   <div id="camera"
+       @click="handleClick"
        class="w-48 h-48 overflow-hidden">
     <video ref="video"
            id="video"
@@ -41,13 +42,14 @@ export default {
         .getUserMedia(constraints)
         .then(this.gotStream)
         .catch(this.errorHandler)
+    },
+    handleClick(e) {
+      this.$emit('click', e)
     }
   },
   mounted() {
     this.videoElement = this.$refs.video
-    navigator.mediaDevices
-      .enumerateDevices()
-      .catch(this.errorHandler)
+    navigator.mediaDevices.enumerateDevices().catch(this.errorHandler)
     this.start()
   }
 }
