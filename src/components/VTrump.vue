@@ -1,7 +1,7 @@
 <template>
   <div @click="handleClick">
     <i class="transition duration-500 ease-in-out transform hover:-translate-y-3">
-      <img src='https://raw.githubusercontent.com/chaochaooo/Bio_Sketchbook/a513d2c3c3fd8d75ccf73c55604fdf79b0673600/public/assets/svg/trump.svg'>
+      <img src='https://raw.githubusercontent.com/chaochaooo/Bio_Sketchbook/main/public/assets/svg/trump.svg'>
     </i>
   </div>
 </template>
