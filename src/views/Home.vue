@@ -12,6 +12,7 @@
                      class="mx-6">Canvas</router-link>
       </div>
     </div>
+    <div class="absolute bottom-0"><img src="https://raw.githubusercontent.com/chaochaooo/Bio_Sketchbook/main/public/assets/png/cover.png" alt=""></div>
     <canvas ref="canvas"
             id="canvas"
             class="hidden"></canvas>
@@ -32,7 +33,9 @@ export default {
       canvas: '',
       context: '',
       scale: 1,
-      sketch: new Image()
+      sketch: new Image(),
+      windowWidth: document.documentElement.clientWidth,
+      windowHeight: document.documentElement.clientHeight
     }
   },
   methods: {
@@ -105,8 +108,8 @@ export default {
     // use this to ensure capture high-resolution image
     this.context = this.canvas.getContext('2d')
     this.scale = window.devicePixelRatio //2
-    this.canvas.width = Math.floor(1024)
-    this.canvas.height = Math.floor(768)
+    this.canvas.width = Math.floor(this.windowWidth)
+    this.canvas.height = Math.floor(this.windowHeight)
     this.context.scale(this.scale, this.scale)
     let that = this
     this.sketch.onload = function () {
