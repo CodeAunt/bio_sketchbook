@@ -14,7 +14,7 @@
       <p class="text">按下快门，和我一起写生吧！</p>
     </div>
     <VCapture @click="onCapture()"
-              class="z-50 absolute top-1/2 right-5"></VCapture>
+              class="z-50 absolute top-1/2 right-5 transform -translate-y-1/2"></VCapture>
     <div class="absolute bottom-0"><img src="https://raw.githubusercontent.com/chaochaooo/Bio_Sketchbook/main/public/assets/png/cover.png"
            alt=""></div>
     <canvas ref="canvas"
