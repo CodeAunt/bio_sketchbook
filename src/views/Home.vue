@@ -4,15 +4,19 @@
       <a id="classification"
          ref="classification"></a>
       <div class="flex flex-row">
-        <button @click="onCapture()"
-                class="ml-6"> Capture </button>
         <button @click="onConfirm()"
                 class="ml-6"> Confirm </button>
         <router-link to="/canvas"
                      class="mx-6">Canvas</router-link>
       </div>
     </div>
-    <div class="absolute bottom-0"><img src="https://raw.githubusercontent.com/chaochaooo/Bio_Sketchbook/main/public/assets/png/cover.png" alt=""></div>
+    <div class="z-50 absolute top-12 left-1/2 transform -translate-x-1/2">
+      <p class="text">按下快门，和我一起写生吧！</p>
+    </div>
+    <VCapture @click="onCapture()"
+              class="z-50 absolute top-1/2 right-5"></VCapture>
+    <div class="absolute bottom-0"><img src="https://raw.githubusercontent.com/chaochaooo/Bio_Sketchbook/main/public/assets/png/cover.png"
+           alt=""></div>
     <canvas ref="canvas"
             id="canvas"
             class="hidden"></canvas>
@@ -25,7 +29,12 @@
 </template>
 
 <script>
+import VCapture from '@/components/VCapture'
+
 export default {
+  components: {
+    VCapture
+  },
   data() {
     return {
       video: '',
@@ -128,4 +137,18 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+@font-face {
+  font-family: 'FZSJ-LXQWTJW';
+  src: url('https://cdn.glitch.me/afbd793d-0eec-495f-95c4-cd3c5b188240%2FFZSJ-LXQWTJW.TTF?v=1638340978154');
+}
+
+.text {
+  font-weight: 600;
+  font-size: 2.25rem /* 30px */;
+  line-height: 2.5rem /* 36px */;
+  text-align: center;
+  color: white;
+  font-family: 'FZSJ-LXQWTJW', cursive;
+}
 </style>
