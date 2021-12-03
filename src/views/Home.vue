@@ -120,6 +120,13 @@ export default {
     }
   },
   mounted() {
+    document.body.addEventListener(
+      'touchmove',
+      function (e) {
+        e.preventDefault()
+      },
+      { passive: false }
+    )
     this.video = this.$refs.video
     this.canvas = this.$refs.canvas
     // use this to ensure capture high-resolution image
