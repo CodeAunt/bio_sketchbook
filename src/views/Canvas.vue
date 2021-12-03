@@ -1,0 +1,150 @@
+<template>
+  <div class="canvas w-full h-full flex flex-col justify-between items-center overflow-hidden"
+       :class="{ default: isDefault, image: !isDefault }"
+       :style="{ backgroundImage: getBg }">
+    <div class="absolute flex flex-row justify-between items-center bg-white rounded-b-2xl">
+      <VHeader></VHeader>
+    </div>
+    <canvas :style="cursor + canvasBg"
+            ref="canvas"
+            id="canvas"
+            class="w-full h-screen"
+            resize></canvas>
+    <VDialogue class="absolute top-1/2 left-0 transform -translate-y-2/3 transition duration-500 ease-in-out"
+               ref="sidebar"
+               @click="toggleSideBar"
+               @toggleMagnifier="toggleMagnifier"></VDialogue>
+    <VContent class="absolute bottom-12"></VContent>
+    <VNext class="absolute bottom-12 right-12 transition duration-500 ease-in-out transform hover:-translate-y-3"></VNext>
+    <VTrump class="absolute bottom-10 left-12 transition duration-500 ease-in-out transform hover:-translate-y-3"></VTrump>
+    <VMagnifier ref="magnifier"
+                @click="toggleSideBar(); toggleMagnifier();"
+                class="absolute top-8 left-16 border-4 border-yellow-400 rounded-full transition duration-500 ease-in-out transform -translate-y-64"></VMagnifier>
+  </div>
+</template>
+
+<script>
+import VHeader from '@/components/VHeader'
+import VDialogue from '@/components/VDialogue'
+import VContent from '@/components/VContent'
+import VNext from '@/components/VNext'
+import VTrump from '@/components/VTrump'
+import VMagnifier from '@/components/VMagnifier'
+import setup from '@/utils/setup'
+import potrace from '@/utils/potrace'
+import { mapState } from 'vuex'
+
+export default {
+  components: {
+    VHeader,
+    VDialogue,
+    VContent,
+    VNext,
+    VTrump,
+    VMagnifier
+  },
+  data() {
+    return {
+      isInit: false,
+      vdrawArgs: {
+        size: {
+          width: 0,
+          height: 0
+        },
+        zoom: 0
+      },
+      svg: '',
+      Potrace: potrace()
+    }
+  },
+  methods: {
+    toggleSideBar() {
+      this.$refs['sidebar'].$el.classList.toggle('-translate-x-44')
+    },
+    toggleMagnifier() {
+      this.$refs['magnifier'].$el.classList.toggle('-translate-y-64')
+    },
+    handleFiles() {
+      this.Potrace.loadImageFromUrl(this.image)
+      let that = this
+      this.Potrace.process(function () {
+        // console.log(that.Potrace.getSVG(1))
+        // Create an HTML element from decoded SVG
+        let wrapper = document.createElement('div')
+        wrapper.innerHTML = that.Potrace.getSVG(1)
+        let newSvg = wrapper.firstChild
+        let paths = newSvg.getElementsByTagName('path')
+        let changeSvg = [].forEach.call(paths, function (path) {
+          path.setAttribute('fill', '#D3D3D3')
+          // path.setAttribute('stroke', 'black')
+          // path.setAttribute('stroke-width', '4')
+          // path.setAttribute('stroke-dasharray', '10,10')
+        })
+        const encodedData = btoa(new XMLSerializer().serializeToString(newSvg))
+        that.svg = 'data:image/svg+xml;base64,' + encodedData
+        // console.log('data:image/svg+xml;base64,' + encodedData)
+      })
+    }
+  },
+  computed: {
+    ...mapState(['image']),
+    isDefault() {
+      if (this.image === '') {
+        return true
+      } else {
+        return false
+      }
+    },
+    getBg() {
+      const defaultBg =
+        "url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxNScgaGVpZ2h0PScxNSc+CiAgPHJlY3Qgd2lkdGg9JzUwJyBoZWlnaHQ9JzUwJyBmaWxsPSIjRjlGOUY5IiAvPgogIDxjaXJjbGUgY3g9IjEiIGN5PSIxIiByPSIwLjgiIGZpbGw9IiNDQUNBQ0IiLz4KPC9zdmc+')"
+      return `url(${this.svg}), ${defaultBg}`
+    },
+    cursor() {
+      const tool = this.$store.state.toolName
+      if (tool === null || tool === 'brush') return `cursor: auto;`
+      if (tool !== 'select') return `cursor: none;`
+      return `cursor: auto;`
+    },
+    canvasBg() {
+      return `background-color: ${this.$store.state.canvasArgs.bgColor}fa;`
+    },
+    canvas() {
+      return this.$refs.canvas
+    }
+  },
+  mounted() {
+    if (this.image !== '') {
+      this.handleFiles()
+    }
+    setup(this)
+    this.$store.commit('setTool', 'pencil')
+  },
+  filters: {
+    toFixed(value) {
+      return value.toFixed(2)
+    }
+  }
+}
+</script>
+
+<style>
+.canvas {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #f9f9f9;
+}
+
+.default {
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxNScgaGVpZ2h0PScxNSc+CiAgPHJlY3Qgd2lkdGg9JzUwJyBoZWlnaHQ9JzUwJyBmaWxsPSIjRjlGOUY5IiAvPgogIDxjaXJjbGUgY3g9IjEiIGN5PSIxIiByPSIwLjgiIGZpbGw9IiNDQUNBQ0IiLz4KPC9zdmc+');
+  background-repeat: repeat;
+  background-position: top;
+}
+
+.image {
+  background-repeat: no-repeat, repeat;
+  background-position: center, top;
+  background-size: 80%, auto;
+}
+</style>

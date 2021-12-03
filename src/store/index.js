@@ -5,6 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    image: '',
     toolName: null,
     canvasArgs: {
       bgColor: '#fff'
@@ -28,6 +29,9 @@ export default new Vuex.Store({
     }
   },
   mutations: {
+    setImage(state, s) {
+      state.image = s
+    },
     setStep(state) {
       if (state.drawSession.step < 3) {
         state.drawSession.step++
