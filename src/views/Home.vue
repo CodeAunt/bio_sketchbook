@@ -15,16 +15,22 @@
     </div>
     <VCapture @click="onCapture()"
               class="z-50 absolute top-1/2 right-5 transform -translate-y-1/2"></VCapture>
-    <div class="absolute bottom-0"><img src="https://raw.githubusercontent.com/chaochaooo/Bio_Sketchbook/main/public/assets/png/cover.png"
-           alt=""></div>
-    <canvas ref="canvas"
-            id="canvas"
-            class="hidden"></canvas>
-    <video ref="video"
-           id="video"
-           class="w-full z-0"
-           playsinline
-           autoplay></video>
+    <div class="z-40 absolute bottom-0">
+      <img src="https://raw.githubusercontent.com/chaochaooo/Bio_Sketchbook/main/public/assets/png/cover.png">
+    </div>
+    <div ref="canvasWrapper"
+         class="video z-0 overflow-hidden hidden absolute bottom-0">
+      <canvas ref="canvas"
+              id="canvas"></canvas>
+    </div>
+    <div class="video z-0 overflow-hidden absolute bottom-0">
+      <video width="1194"
+             height="760"
+             ref="video"
+             id="video"
+             playsinline
+             autoplay></video>
+    </div>
   </div>
 </template>
 
@@ -44,7 +50,7 @@ export default {
       scale: 1,
       sketch: new Image(),
       windowWidth: 1194,
-      windowHeight: 760
+      windowHeight: 897
       // windowWidth: document.documentElement.clientWidth,
       // windowHeight: document.documentElement.clientHeight
     }
@@ -76,7 +82,7 @@ export default {
         .catch(this.errorHandler)
     },
     onCapture() {
-      this.canvas.classList.toggle('hidden')
+      this.$refs.canvasWrapper.classList.toggle('hidden')
       this.video.classList.toggle('hidden')
       this.context.drawImage(
         this.video,
@@ -152,5 +158,10 @@ export default {
   text-align: center;
   color: white;
   font-family: 'FZSJ-LXQWTJW', cursive;
+}
+
+.video {
+  width: 1194px;
+  height: 760px;
 }
 </style>
