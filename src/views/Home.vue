@@ -43,8 +43,10 @@ export default {
       context: '',
       scale: 1,
       sketch: new Image(),
-      windowWidth: document.documentElement.clientWidth,
-      windowHeight: document.documentElement.clientHeight
+      windowWidth: 1194,
+      windowHeight: 760
+      // windowWidth: document.documentElement.clientWidth,
+      // windowHeight: document.documentElement.clientHeight
     }
   },
   methods: {
