@@ -15,7 +15,7 @@
                @click="toggleSideBar"
                @toggleMagnifier="toggleMagnifier"></VDialogue>
     <VContent class="absolute bottom-12"></VContent>
-    <VNext class="absolute bottom-12 right-12 transition duration-500 ease-in-out transform hover:-translate-y-3"></VNext>
+    <VNext class="absolute bottom-12 right-9 transition duration-500 ease-in-out transform hover:-translate-y-3"></VNext>
     <VTrump class="absolute bottom-10 left-12 transition duration-500 ease-in-out transform hover:-translate-y-3"></VTrump>
     <VMagnifier ref="magnifier"
                 @click="toggleSideBar(); toggleMagnifier();"

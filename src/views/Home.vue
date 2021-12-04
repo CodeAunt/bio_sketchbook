@@ -1,14 +1,16 @@
 <template>
   <div id="container">
-    <div class="z-50 absolute bg-white bottom-12 left-1/2 transform -translate-x-1/2 flex flex-col justify-between items-center">
+    <div class="z-50 absolute bottom-12 left-1/2 transform -translate-x-1/2">
       <a id="classification"
-         ref="classification"></a>
-      <div class="flex flex-row">
-        <button @click="onConfirm()"
-                class="ml-6"> Confirm </button>
-        <router-link to="/canvas"
-                     class="mx-6">Canvas</router-link>
-      </div>
+         ref="classification"
+         class="text"></a>
+    </div>
+    <div ref="toCanvas"
+         class="z-50 absolute bottom-6 right-9 hidden">
+      <router-link to="/canvas"
+                   class="mx-6">
+        <img src='https://raw.githubusercontent.com/chaochaooo/Bio_Sketchbook/main/public/assets/svg/next.svg'>
+      </router-link>
     </div>
     <div class="z-50 absolute top-12 left-1/2 transform -translate-x-1/2">
       <p class="text">按下快门，和我一起写生吧！</p>
@@ -17,6 +19,10 @@
               class="z-50 absolute top-1/2 right-5 transform -translate-y-1/2"></VCapture>
     <div class="z-40 absolute bottom-0">
       <img src="https://raw.githubusercontent.com/chaochaooo/Bio_Sketchbook/main/public/assets/png/cover.png">
+    </div>
+    <div @click="clear()"
+         ref="clear"
+         class="z-50 absolute w-80 h-80 left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 hidden">
     </div>
     <div ref="canvasWrapper"
          class="video z-0 overflow-hidden hidden absolute bottom-0">
@@ -83,6 +89,8 @@ export default {
     },
     onCapture() {
       this.$refs.canvasWrapper.classList.toggle('hidden')
+      this.$refs.toCanvas.classList.toggle('hidden')
+      this.$refs.clear.classList.toggle('hidden')
       this.video.classList.toggle('hidden')
       this.context.drawImage(
         this.video,
@@ -92,6 +100,7 @@ export default {
         this.canvas.height / this.scale
       ) // 500 375
       this.imgData = this.canvas.toDataURL('image/jpeg')
+      this.onConfirm()
     },
     onConfirm() {
       let xhr = new XMLHttpRequest()
@@ -109,14 +118,20 @@ export default {
           if (result) {
             that.$store.commit('setImage', result.data.resImage)
             // that.sketch.src = result.data.resImage // draw to sketch content
-            // document.getElementById('classification').innerHTML =
-            //   result.data.class
-            // // document.getElementById('classification').innerText = result.data.class;
+            document.getElementById('classification').innerHTML =
+              result.data.class
           }
         }
       }
       xhr.send(form)
       // alert('sent!')
+    },
+    clear() {
+      this.$refs.canvasWrapper.classList.toggle('hidden')
+      this.$refs.toCanvas.classList.toggle('hidden')
+      this.video.classList.toggle('hidden')
+      this.$refs.clear.classList.toggle('hidden')
+      document.getElementById('classification').innerHTML = ''
     }
   },
   mounted() {
