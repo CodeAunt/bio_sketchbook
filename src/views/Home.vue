@@ -42,6 +42,7 @@
 
 <script>
 import VCapture from '@/components/VCapture'
+import plantData from '@/utils/plant'
 import { mapState } from 'vuex'
 
 export default {
@@ -63,7 +64,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['capture'])
+    ...mapState(['capture', 'plant'])
   },
   methods: {
     errorHandler(error) {
@@ -121,7 +122,8 @@ export default {
           // console.log(result)
           if (result) {
             that.$store.commit('setImage', result.data.resImage)
-            // that.sketch.src = result.data.resImage // draw to sketch content
+            // that.$store.commit('setPlant', result.data.class)
+            that.setPlantData(that)
             document.getElementById('classification').innerHTML =
               result.data.class
             that.$refs.toCanvas.classList.toggle('hidden')
@@ -130,6 +132,14 @@ export default {
       }
       xhr.send(form)
       // alert('sent!')
+    },
+    setPlantData(that) {
+      for (let i = 0; i < plantData.length; i++) {
+        if (that.plant.name === plantData[i].name) {
+          // console.log(plantData[i])
+          that.$store.commit('setPlantData', plantData[i])
+        }
+      }
     },
     clear() {
       this.$refs.canvasWrapper.classList.toggle('hidden')

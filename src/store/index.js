@@ -8,6 +8,7 @@ export default new Vuex.Store({
     image: '',
     capture: '',
     drawing: '',
+    plant: { name: '杜鹃花', data: {} },
     toolName: null,
     canvasArgs: {
       bgColor: '#fff'
@@ -39,6 +40,12 @@ export default new Vuex.Store({
     },
     setDrawing(state, s) {
       state.drawing = s
+    },
+    setPlant(state, s) {
+      state.plant.name = s
+    },
+    setPlantData(state, s) {
+      state.plant.data = s
     },
     setStep(state) {
       if (state.drawSession.step < 6) {

@@ -96,7 +96,7 @@ export default {
         let paths = newSvg.getElementsByTagName('path')
         let changeSvg = [].forEach.call(paths, function (path) {
           if (path.getAttribute('fill') === '#ffffff') {
-            path.setAttribute('fill-opacity', '0')
+            path.setAttribute('fill-opacity', 0)
           }
         })
         const encodedData = btoa(new XMLSerializer().serializeToString(newSvg))
@@ -107,7 +107,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['image', 'drawSession']),
+    ...mapState(['image', 'drawSession', 'plant']),
     isDefault() {
       if (this.image === '') {
         return true
@@ -137,6 +137,7 @@ export default {
     if (this.image !== '') {
       this.handleFiles()
     }
+
     setup(this)
     this.$store.commit('setTool', 'pencil')
   },

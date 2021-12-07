@@ -9,25 +9,23 @@ import { mapState } from 'vuex'
 
 export default {
   computed: {
-    ...mapState(['drawSession']),
+    ...mapState(['drawSession', 'plant']),
     content() {
-      let s = ''
-      if (this.drawSession.step === 0) {
-        s =
-          '我是杜鹃花，一般在春季开花，每簇花2到6朵，花冠漏斗形。叶革质，常集生枝端，卵形、椭圆状卵形或倒卵形或倒卵形至倒披针形。'
-      } else if (this.drawSession.step === 1) {
-        s =
-          '我是杜鹃花，一般在春季开花，每簇花2到6朵，花冠漏斗形。叶革质，常集生枝端，卵形、椭圆状卵形或倒卵形或倒卵形至倒披针形。'
-      } else if (this.drawSession.step === 2) {
-        s =
-          '我有红、淡红、杏红、雪青、白色等不同颜色的品种，花色繁茂艳丽。我的花冠上往往会有一些斑点。我的分枝多而纤细，密被亮棕褐色扁平糙伏毛。'
-      } else if (this.drawSession.step === 3) {
-        s =
-          '我主要生活在亚洲，常出现在山地疏灌丛或松林下，周围会有很多绿叶，也会有一些小昆虫会出现在我的身边。'
+      if (this.plant.data !== {}) {
+        if (this.drawSession.step === 0) {
+          return this.plant.data.draw[0]
+        } else if (this.drawSession.step === 1) {
+          return this.plant.data.draw[0]
+        } else if (this.drawSession.step === 2) {
+          return this.plant.data.draw[1]
+        } else if (this.drawSession.step === 3) {
+          return this.plant.data.draw[2]
+        }
+      } else {
+        return ''
       }
       // this.$store.commit('setDescription', s)
       // console.log(this.drawSession.description)
-      return s
     }
   }
 }
