@@ -42,6 +42,7 @@
 
 <script>
 import VCapture from '@/components/VCapture'
+import { mapState } from 'vuex'
 
 export default {
   components: {
@@ -60,6 +61,9 @@ export default {
       // windowWidth: document.documentElement.clientWidth,
       // windowHeight: document.documentElement.clientHeight
     }
+  },
+  computed: {
+    ...mapState(['capture'])
   },
   methods: {
     errorHandler(error) {
@@ -89,7 +93,6 @@ export default {
     },
     onCapture() {
       this.$refs.canvasWrapper.classList.toggle('hidden')
-      this.$refs.toCanvas.classList.toggle('hidden')
       this.$refs.clear.classList.toggle('hidden')
       this.video.classList.toggle('hidden')
       this.context.drawImage(
@@ -100,6 +103,7 @@ export default {
         this.canvas.height / this.scale
       ) // 500 375
       this.imgData = this.canvas.toDataURL('image/jpeg')
+      this.$store.commit('setCapture', this.imgData)
       this.onConfirm()
     },
     onConfirm() {
@@ -120,6 +124,7 @@ export default {
             // that.sketch.src = result.data.resImage // draw to sketch content
             document.getElementById('classification').innerHTML =
               result.data.class
+            that.$refs.toCanvas.classList.toggle('hidden')
           }
         }
       }

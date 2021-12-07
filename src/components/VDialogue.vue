@@ -24,13 +24,17 @@ export default {
     ...mapState(['drawSession']),
     content() {
       if (this.drawSession.step === 0) {
-        return '你好呀，小朋友! 我已经帮你绘制了我的轮廓，你可以通过观察将我补充完整吗？'
+        return '你好呀，小朋友! 我已经帮你绘制了我的轮廓，点击下一步让我们开始写生吧！'
       } else if (this.drawSession.step === 1) {
-        return '小朋友! 你可以通过观察画出我的样子吗？比如我的花瓣，我的叶子等等。'
+        return '小朋友! 你可以通过观察补充我的样子吗？比如我的花瓣，我的叶子等等。'
       } else if (this.drawSession.step === 2) {
         return '小朋友! 你可以给我涂上颜色和画出纹理吗？如果周围安全的话，试着摸摸看！'
       } else if (this.drawSession.step === 3) {
         return '小朋友! 你可以观察周围环境并丰富你的画面吗？有没有其他植物或者小昆虫？'
+      } else if (this.drawSession.step === 4) {
+        return '小朋友! 听听看，我的周围有什么声音？你可以把它录下来吗？'
+      } else if (this.drawSession.step === 5) {
+        return '太棒了！你已经完成了这次的写生，点击下一步查看我的完整信息吧！'
       } else {
         return ''
       }

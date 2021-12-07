@@ -14,9 +14,12 @@
                ref="sidebar"
                @click="toggleSideBar"
                @toggleMagnifier="toggleMagnifier"></VDialogue>
-    <VContent class="absolute bottom-12"></VContent>
-    <VNext class="absolute bottom-12 right-9 transition duration-500 ease-in-out transform hover:-translate-y-3"></VNext>
-    <VTrump class="absolute bottom-10 left-12 transition duration-500 ease-in-out transform hover:-translate-y-3"></VTrump>
+    <VContent v-if="drawSession.step < 4"
+              class="absolute bottom-12"></VContent>
+    <VNext class="absolute bottom-12 left-16"
+           @click="exportSvg"></VNext>
+    <VTrump v-if="drawSession.step < 4"
+            class="absolute bottom-11 right-16"></VTrump>
     <VMagnifier ref="magnifier"
                 @click="toggleSideBar(); toggleMagnifier();"
                 class="absolute top-8 left-16 border-4 border-yellow-400 rounded-full transition duration-500 ease-in-out transform -translate-y-64"></VMagnifier>
@@ -82,12 +85,29 @@ export default {
         })
         const encodedData = btoa(new XMLSerializer().serializeToString(newSvg))
         that.svg = 'data:image/svg+xml;base64,' + encodedData
+        that.$store.commit('setImage', that.svg)
         // console.log('data:image/svg+xml;base64,' + encodedData)
       })
+    },
+    exportSvg() {
+      if (this.drawSession.step === 6) {
+        console.log('exportSvg')
+        let newSvg = paper.project.exportSVG()
+        let paths = newSvg.getElementsByTagName('path')
+        let changeSvg = [].forEach.call(paths, function (path) {
+          if (path.getAttribute('fill') === '#ffffff') {
+            path.setAttribute('fill-opacity', '0')
+          }
+        })
+        const encodedData = btoa(new XMLSerializer().serializeToString(newSvg))
+
+        let url = 'data:image/svg+xml;base64,' + encodedData
+        this.$store.commit('setDrawing', url)
+      }
     }
   },
   computed: {
-    ...mapState(['image']),
+    ...mapState(['image', 'drawSession']),
     isDefault() {
       if (this.image === '') {
         return true

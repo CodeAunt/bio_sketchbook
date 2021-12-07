@@ -25,7 +25,7 @@ export default {
         s =
           '我主要生活在亚洲，常出现在山地疏灌丛或松林下，周围会有很多绿叶，也会有一些小昆虫会出现在我的身边。'
       }
-      this.$store.commit('setDescription', s)
+      // this.$store.commit('setDescription', s)
       // console.log(this.drawSession.description)
       return s
     }

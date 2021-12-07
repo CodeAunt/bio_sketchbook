@@ -6,6 +6,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     image: '',
+    capture: '',
+    drawing: '',
     toolName: null,
     canvasArgs: {
       bgColor: '#fff'
@@ -32,8 +34,14 @@ export default new Vuex.Store({
     setImage(state, s) {
       state.image = s
     },
+    setCapture(state, s) {
+      state.capture = s
+    },
+    setDrawing(state, s) {
+      state.drawing = s
+    },
     setStep(state) {
-      if (state.drawSession.step < 3) {
+      if (state.drawSession.step < 6) {
         state.drawSession.step++
       }
     },
