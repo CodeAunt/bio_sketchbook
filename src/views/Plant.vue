@@ -26,9 +26,10 @@
         <h1 class="text-5xl pb-6"
             style="color: #14B9F4">{{ plant.data.name }}</h1>
         <h2 class="text-3xl pb-10 text-gray-900">{{ plant.data.type }}</h2>
-        <div id="desc"
-             style="-webkit-overflow-scrolling: touch;"
-             class="overflow-y-scroll h-72 text-gray-900">
+        <div class="desc overflow-y-scroll h-72 text-gray-900">
+          <div id="desc"
+               style="min-height: 300px;">
+          </div>
         </div>
       </div>
 
@@ -86,5 +87,11 @@ export default {
 
 .text {
   font-family: 'FZSJ-LXQWTJW', cursive;
+}
+
+.desc {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  -webkit-overflow-y: auto; /* added css prefix for safari */
 }
 </style>
