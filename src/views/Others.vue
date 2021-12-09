@@ -28,7 +28,8 @@ export default {
   },
   methods: {
     async translate(text) {
-      let url = '/api'
+      // let url = '/api'
+      let url = 'https://api.fanyi.baidu.com/api/trans/vip/translate'
       let salt = new Date().getTime()
       let str = this.appid + text + salt + this.key
       let sign = md5(str)
