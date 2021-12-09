@@ -23,15 +23,14 @@
       </div>
 
       <div class="text pl-52 pr-24">
-        <h1 class="text-5xl pb-6"
-            style="color: #14B9F4">{{ plant.data.name }}</h1>
-        <h2 class="text-3xl pb-10 text-gray-900">{{ plant.data.type }}</h2>
+        <div>
+          <h1 class="text-5xl pb-6"
+              style="color: #14B9F4">{{ plant.data.name }}</h1>
+          <h2 class="text-3xl pb-10 text-gray-900">{{ plant.data.type }}</h2>
+        </div>
         <div id="desc"
              style="-webkit-overflow-scrolling: touch;"
              class="overflow-scroll h-72 text-gray-900">
-          <p class="text-lg pb-3">杜鹃（学名：Rhododendron simsii Planch.）：是双子叶植物纲、杜鹃花科、杜鹃属的常绿灌木、落叶灌木。又名映山红、山石榴。相传，古有杜鹃鸟，日夜哀鸣而咯血，染红遍山的花朵，因而得名。杜鹃花一般春季开花，每簇花2-6朵，花冠漏斗形，有红、淡红、杏红、雪青、白色等，花色繁茂艳丽。生于海拔500-1200（-2500）米的山地疏灌丛或松林下，为中国中南及西南典型的酸性土指示植物。</p>
-          <p class="text-lg pb-3">杜鹃（学名：Rhododendron simsii Planch.）：是双子叶植物纲、杜鹃花科、杜鹃属的常绿灌木、落叶灌木。又名映山红、山石榴。相传，古有杜鹃鸟，日夜哀鸣而咯血，染红遍山的花朵，因而得名。杜鹃花一般春季开花，每簇花2-6朵，花冠漏斗形，有红、淡红、杏红、雪青、白色等，花色繁茂艳丽。生于海拔500-1200（-2500）米的山地疏灌丛或松林下，为中国中南及西南典型的酸性土指示植物。</p>
-          <p class="text-lg pb-3">杜鹃（学名：Rhododendron simsii Planch.）：是双子叶植物纲、杜鹃花科、杜鹃属的常绿灌木、落叶灌木。又名映山红、山石榴。相传，古有杜鹃鸟，日夜哀鸣而咯血，染红遍山的花朵，因而得名。杜鹃花一般春季开花，每簇花2-6朵，花冠漏斗形，有红、淡红、杏红、雪青、白色等，花色繁茂艳丽。生于海拔500-1200（-2500）米的山地疏灌丛或松林下，为中国中南及西南典型的酸性土指示植物。</p>
         </div>
       </div>
 
