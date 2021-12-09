@@ -27,6 +27,7 @@
             style="color: #14B9F4">{{ plant.data.name }}</h1>
         <h2 class="text-3xl pb-10 text-gray-900">{{ plant.data.type }}</h2>
         <div id="desc"
+             style="-webkit-overflow-scrolling: touch"
              class="overflow-scroll h-72 text-gray-900">
         </div>
       </div>
