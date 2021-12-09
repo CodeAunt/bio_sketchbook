@@ -2,7 +2,8 @@
   <div class="plant w-screen h-screen">
     <router-link to="/"
                  class="absolute top-11 left-14">
-      <img src='https://raw.githubusercontent.com/chaochaooo/Bio_Sketchbook/main/public/assets/svg/back.svg'>
+      <img @click="toHome"
+           src="https://raw.githubusercontent.com/chaochaooo/Bio_Sketchbook/main/public/assets/svg/back.svg">
     </router-link>
 
     <div class="px-16 pt-44 flex flex-row justify-between items-top">
@@ -33,7 +34,7 @@
       <div class="absolute bottom-12 right-16">
         <router-link to="/others"
                      class="mx-6">
-          <img src='https://raw.githubusercontent.com/chaochaooo/Bio_Sketchbook/main/public/assets/svg/next.svg'>
+          <img src="https://raw.githubusercontent.com/chaochaooo/Bio_Sketchbook/main/public/assets/svg/next.svg">
         </router-link>
       </div>
     </div>
@@ -45,6 +46,12 @@ import { mapState } from 'vuex'
 
 export default {
   computed: { ...mapState(['image', 'capture', 'drawing', 'plant']) },
+  methods: {
+    toHome() {
+      this.$store.commit('reset')
+      // console.log(this.image)
+    }
+  },
   mounted() {
     let desc = document.getElementById('desc')
     for (let i = 0; i < this.plant.data.data.length; i++) {

@@ -8,7 +8,7 @@ export default new Vuex.Store({
     image: '',
     capture: '',
     drawing: '',
-    plant: { name: '杜鹃花', data: {} },
+    plant: { name: '', data: {} },
     toolName: null,
     canvasArgs: {
       bgColor: '#fff'
@@ -32,6 +32,15 @@ export default new Vuex.Store({
     }
   },
   mutations: {
+    reset(state) {
+      state.image = ''
+      state.capture = ''
+      state.drawing = ''
+      state.plant.name = ''
+      state.plant.data = {}
+      state.drawSession.step = 0
+      state.drawSession.description = ''
+    },
     setImage(state, s) {
       state.image = s
     },

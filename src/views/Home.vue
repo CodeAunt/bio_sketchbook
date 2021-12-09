@@ -126,13 +126,20 @@ export default {
           document.getElementById('classification').innerHTML =
             result.data.class
           if (result) {
-            if (result.data.class !== '非植物') {
+            if (result.data.class === '非植物') {
               // reset to capture
-              that.clear()
+              // that.clear()
+              that.$store.commit('setImage', result.data.resImage)
+              that.$store.commit('setPlant', '杜鹃花')
+              for (let i = 0; i < plantData.length; i++) {
+                if (that.plant.name === plantData[i].name) {
+                  that.$store.commit('setPlantData', plantData[i])
+                }
+              }
             } else {
               // set the current plant and get relevent data
               that.$store.commit('setImage', result.data.resImage)
-              // that.$store.commit('setPlant', result.data.class)
+              that.$store.commit('setPlant', result.data.class)
               for (let i = 0; i < plantData.length; i++) {
                 if (that.plant.name === plantData[i].name) {
                   // console.log(plantData[i])

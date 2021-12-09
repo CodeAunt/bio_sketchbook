@@ -2,7 +2,8 @@
   <div class="others w-screen h-screen">
     <router-link to="/"
                  class="absolute top-11 left-14">
-      <img src='https://raw.githubusercontent.com/chaochaooo/Bio_Sketchbook/main/public/assets/svg/back.svg'>
+      <img @click="toHome"
+           src="https://raw.githubusercontent.com/chaochaooo/Bio_Sketchbook/main/public/assets/svg/back.svg">
     </router-link>
     <p class="px-16 pt-44 text text-6xl">类似的植物</p>
     <div id="others"
@@ -26,13 +27,13 @@ export default {
     }
   },
   methods: {
-    translate(text) {
-      let url = 'https://api.fanyi.baidu.com/api/trans/vip/translate'
+    async translate(text) {
+      let url = '/api'
       let salt = new Date().getTime()
       let str = this.appid + text + salt + this.key
       let sign = md5(str)
       let encodedText = encodeURIComponent(text)
-      axios
+      await axios
         .get(
           url +
             '?q=' +
@@ -50,13 +51,16 @@ export default {
         )
         .then(function (response) {
           console.log(response)
-          text = response.trans_result[0].dst
+          text = response.data.trans_result[0].dst
         })
         .catch(function (error) {
           console.log(error)
         })
-
       return text
+    },
+    toHome() {
+      this.$store.commit('reset')
+      // console.log(this.image)
     }
   },
   async mounted() {
@@ -83,7 +87,7 @@ export default {
     for (let i = 0; i < count; i++) {
       let plantWrapper = document.createElement('div')
       let name = document.createElement('p')
-      name.innerHTML = this.translate(this.plants[i].name)
+      name.innerHTML = await this.translate(this.plants[i].name)
       let imageWrapper = document.createElement('div')
       let image = document.createElement('img')
       image.setAttribute('src', this.plants[i].image)
