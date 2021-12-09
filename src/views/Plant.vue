@@ -6,7 +6,7 @@
            src="https://raw.githubusercontent.com/chaochaooo/Bio_Sketchbook/main/public/assets/svg/back.svg">
     </router-link>
 
-    <div class="px-16 pt-32 flex flex-row justify-between items-top">
+    <div class="px-16 pt-36 flex flex-row justify-between items-top">
       <div class="relative">
         <div class="w-64 h-64 overflow-hidden border-8 border-yellow-400 rounded-full">
           <img class="image"
@@ -23,14 +23,12 @@
       </div>
 
       <div class="text pl-52 pr-24">
-        <!-- <div>
-          <h1 class="text-5xl pb-6"
-              style="color: #14B9F4">{{ plant.data.name }}</h1>
-          <h2 class="text-3xl pb-10 text-gray-900">{{ plant.data.type }}</h2>
-        </div> -->
+        <h1 class="text-5xl pb-6"
+            style="color: #14B9F4">{{ plant.data.name }}</h1>
+        <h2 class="text-3xl pb-10 text-gray-900">{{ plant.data.type }}</h2>
         <div id="desc"
              style="-webkit-overflow-scrolling: touch;"
-             class="overflow-scroll h-72 text-gray-900">
+             class="overflow-scroll h-72 text-lg text-gray-900">
         </div>
       </div>
 
@@ -57,11 +55,10 @@ export default {
   },
   mounted() {
     let desc = document.getElementById('desc')
+    desc.innerHTML = ''
     for (let i = 0; i < this.plant.data.data.length; i++) {
-      let element = document.createElement('p')
-      element.innerHTML = this.plant.data.data[i]
-      element.setAttribute('class', 'text-lg pb-3')
-      desc.appendChild(element)
+      desc.innerHTML += this.plant.data.data[i]
+      desc.innerHTML += '</br>'
     }
   }
 }
