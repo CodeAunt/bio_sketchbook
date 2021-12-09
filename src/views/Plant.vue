@@ -67,12 +67,15 @@ export default {
 .plant {
   background-color: rgba(255, 237, 181, 80);
 }
+
 .image {
   transform: scale(1.7);
 }
+
 .contour {
   transform: scale(0.8);
 }
+
 .text {
   font-family: 'FZSJ-LXQWTJW', cursive;
 }

@@ -51,14 +51,14 @@ export default {
   },
   data() {
     return {
-      video: '',
-      imgData: '',
-      canvas: '',
-      context: '',
-      scale: 1,
-      sketch: new Image(),
-      windowWidth: 1194,
-      windowHeight: 897
+      video: '', // video element
+      imgData: '', // captured image
+      canvas: '', // canvas to show captured image
+      context: '', // context object
+      scale: 1, // scale index
+      sketch: new Image(), // image object
+      windowWidth: 1194, // Safari iPad pro
+      windowHeight: 897 // Safari iPad pro without top search tab
       // windowWidth: document.documentElement.clientWidth,
       // windowHeight: document.documentElement.clientHeight
     }
@@ -83,6 +83,7 @@ export default {
         })
       }
       let constraints = {
+        // toggle back camera
         video: {
           facingMode: 'environment'
         }
@@ -93,6 +94,7 @@ export default {
         .catch(this.errorHandler)
     },
     onCapture() {
+      document.getElementById('classification').innerHTML = ''
       this.$refs.canvasWrapper.classList.toggle('hidden')
       this.$refs.clear.classList.toggle('hidden')
       this.video.classList.toggle('hidden')
@@ -120,33 +122,35 @@ export default {
           // Request finished. Do processing here.
           let result = JSON.parse(xhr.responseText)
           // console.log(result)
+          that.$refs.toCanvas.classList.toggle('hidden')
+          document.getElementById('classification').innerHTML =
+            result.data.class
           if (result) {
-            that.$store.commit('setImage', result.data.resImage)
-            // that.$store.commit('setPlant', result.data.class)
-            that.setPlantData(that)
-            document.getElementById('classification').innerHTML =
-              result.data.class
-            that.$refs.toCanvas.classList.toggle('hidden')
+            if (result.data.class === '非植物') {
+              // reset to capture
+              that.clear()
+            } else {
+              // set the current plant and get relevent data
+              that.$store.commit('setImage', result.data.resImage)
+              // that.$store.commit('setPlant', result.data.class)
+              for (let i = 0; i < plantData.length; i++) {
+                if (that.plant.name === plantData[i].name) {
+                  // console.log(plantData[i])
+                  that.$store.commit('setPlantData', plantData[i])
+                }
+              }
+            }
           }
         }
       }
       xhr.send(form)
       // alert('sent!')
     },
-    setPlantData(that) {
-      for (let i = 0; i < plantData.length; i++) {
-        if (that.plant.name === plantData[i].name) {
-          // console.log(plantData[i])
-          that.$store.commit('setPlantData', plantData[i])
-        }
-      }
-    },
     clear() {
       this.$refs.canvasWrapper.classList.toggle('hidden')
       this.$refs.toCanvas.classList.toggle('hidden')
       this.video.classList.toggle('hidden')
       this.$refs.clear.classList.toggle('hidden')
-      document.getElementById('classification').innerHTML = ''
     }
   },
   mounted() {
