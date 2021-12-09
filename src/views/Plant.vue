@@ -26,7 +26,8 @@
         <h1 class="text-5xl pb-6"
             style="color: #14B9F4">{{ plant.data.name }}</h1>
         <h2 class="text-3xl pb-10 text-gray-900">{{ plant.data.type }}</h2>
-        <VScroll :data="plantData" class="h-72 overflow-hidden">
+        <VScroll :data="plantData"
+                 class="h-72 overflow-hidden">
           <div id="desc"
                class="text-lg text-gray-900">
           </div>
@@ -68,6 +69,7 @@ export default {
     desc.innerHTML = ''
     for (let i = 0; i < this.plant.data.data.length; i++) {
       desc.innerHTML += this.plant.data.data[i]
+      desc.innerHTML += '</br>'
       desc.innerHTML += '</br>'
     }
 
