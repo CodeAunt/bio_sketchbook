@@ -6,14 +6,14 @@
            src="https://raw.githubusercontent.com/chaochaooo/Bio_Sketchbook/main/public/assets/svg/back.svg">
     </router-link>
 
-    <div class="px-16 pt-44 flex flex-row justify-between items-top">
+    <div class="px-16 pt-36 flex flex-row justify-between items-top">
       <div class="relative">
         <div class="w-64 h-64 overflow-hidden border-8 border-yellow-400 rounded-full">
           <img class="image"
                :src="capture">
         </div>
         <div class="bg-white absolute w-80 h-80 left-24 top-40 overflow-hidden border-8 border-yellow-400 rounded-full">
-          <div class="image absolute w-80 h-80">
+          <div class="image absolute w-80 h-80 overflow-hidden">
             <img class="absolute top-0 contour"
                  :src="image">
             <img class="absolute top-2"
@@ -22,12 +22,12 @@
         </div>
       </div>
 
-      <div class="text pl-48 pr-24">
+      <div class="text pl-52 pr-24">
         <h1 class="text-5xl pb-6"
             style="color: #14B9F4">{{ plant.data.name }}</h1>
         <h2 class="text-3xl pb-10 text-gray-900">{{ plant.data.type }}</h2>
         <div id="desc"
-             class="overflow-auto h-72 text-gray-900">
+             class="overflow-scroll h-72 text-gray-900">
         </div>
       </div>
 
