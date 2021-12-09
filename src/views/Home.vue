@@ -126,7 +126,7 @@ export default {
           document.getElementById('classification').innerHTML =
             result.data.class
           if (result) {
-            if (result.data.class === '非植物') {
+            if (result.data.class !== '非植物') {
               // reset to capture
               that.clear()
             } else {

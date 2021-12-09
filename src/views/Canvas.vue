@@ -36,6 +36,7 @@ import VMagnifier from '@/components/VMagnifier'
 import setup from '@/utils/setup'
 import potrace from '@/utils/potrace'
 import { mapState } from 'vuex'
+import { clearProject, createLayer } from '@/utils/shared'
 
 export default {
   components: {
@@ -93,14 +94,7 @@ export default {
       if (this.drawSession.step === 6) {
         console.log('exportSvg')
         let newSvg = paper.project.exportSVG()
-        let paths = newSvg.getElementsByTagName('path')
-        let changeSvg = [].forEach.call(paths, function (path) {
-          if (path.getAttribute('fill') === '#ffffff') {
-            path.setAttribute('fill-opacity', 0)
-          }
-        })
-        const encodedData = btoa(new XMLSerializer().serializeToString(newSvg))
-
+        let encodedData = btoa(new XMLSerializer().serializeToString(newSvg))
         let url = 'data:image/svg+xml;base64,' + encodedData
         this.$store.commit('setDrawing', url)
       }
@@ -139,6 +133,8 @@ export default {
     }
 
     setup(this)
+    clearProject()
+    createLayer()
     this.$store.commit('setTool', 'pencil')
   },
   filters: {
