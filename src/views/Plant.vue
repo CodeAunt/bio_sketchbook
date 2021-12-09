@@ -26,9 +26,12 @@
         <h1 class="text-5xl pb-6"
             style="color: #14B9F4">{{ plant.data.name }}</h1>
         <h2 class="text-3xl pb-10 text-gray-900">{{ plant.data.type }}</h2>
-        <div id="desc"
-             style="-webkit-overflow-scrolling: touch;"
-             class="overflow-scroll h-72 text-lg text-gray-900">
+        <div class="h-72">
+          <vue-scroll :ops="ops">
+            <div id="desc"
+                 class="text-lg h-72 text-gray-900">
+            </div>
+          </vue-scroll>
         </div>
       </div>
 
@@ -46,6 +49,25 @@
 import { mapState } from 'vuex'
 
 export default {
+  data() {
+    return {
+      ops: {
+        vuescroll: {},
+        scrollPanel: {},
+        rail: {
+          keepShow: true
+        },
+        bar: {
+          hoverStyle: true,
+          onlyShowBarOnScroll: false, //是否只有滚动的时候才显示滚动条
+          background: '#F5F5F5', //滚动条颜色
+          opacity: 0.5, //滚动条透明度
+          'overflow-x': 'hidden'
+        },
+        videoData: []
+      }
+    }
+  },
   computed: { ...mapState(['image', 'capture', 'drawing', 'plant']) },
   methods: {
     toHome() {

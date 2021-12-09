@@ -6,6 +6,7 @@ import VTooltip from 'v-tooltip'
 import 'tailwindcss/tailwind.css'
 import router from './router'
 import Resource from 'vue-resource';
+import vuescroll from 'vuescroll';
 
 paper.install(window)
 Vue.prototype.$store = store
@@ -13,6 +14,7 @@ Vue.config.productionTip = false
 
 Vue.use(VTooltip)
 Vue.use(Resource)
+Vue.use(vuescroll);
 
 export default new Vue({
   store,
