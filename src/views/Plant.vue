@@ -40,7 +40,7 @@
         </VScroll>
       </div>
 
-      <div class="absolute bottom-12 right-16">
+      <div class="absolute bottom-6 right-12">
         <router-link to="/others"
                      class="mx-6">
           <img src="https://raw.githubusercontent.com/chaochaooo/Bio_Sketchbook/main/public/assets/svg/next.svg">
