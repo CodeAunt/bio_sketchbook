@@ -40,7 +40,7 @@ export default {
 }
 
 .content-wrapper {
-  max-width: 640px;
+  max-width: 800px;
   border-radius: 1rem /* 16px */;
   background-color: white;
   box-shadow: 0px 8px 0px #ffc000;

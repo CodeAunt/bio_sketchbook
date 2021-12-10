@@ -17,7 +17,7 @@
     <VContent v-if="drawSession.step < 4"
               class="absolute bottom-11"></VContent>
     <VRecorder v-if="drawSession.step === 4"
-               class="absolute bottom-16"></VRecorder>
+               class="absolute bottom-11"></VRecorder>
     <VNext class="absolute bottom-12 right-16"
            @click="exportSvg"></VNext>
     <VTrump v-if="drawSession.step < 4"
