@@ -4,13 +4,13 @@
                  class="absolute top-11 left-14">
       <img src="https://raw.githubusercontent.com/chaochaooo/Bio_Sketchbook/main/public/assets/svg/back.svg">
     </router-link>
-    <p class="px-16 pt-36 text text-6xl">类似的植物</p>
+    <p class="pt-32 text text-6xl w-full mx-auto text-center">类似的植物</p>
     <div id="others"
          class="px-16 pt-8 flex flex-row justify-between items-top text text-3xl"></div>
     <router-link to="/">
       <p @click="toHome"
          style="color: #14B9F4"
-         class="text text-6xl absolute bottom-24 right-24">继续寻找吧 -></p>
+         class="text text-6xl absolute bottom-16 right-12">继续寻找吧 -></p>
     </router-link>
   </div>
 </template>
