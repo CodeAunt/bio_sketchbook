@@ -18,10 +18,10 @@
               class="absolute bottom-12"></VContent>
     <VRecorder v-if="drawSession.step === 4"
                class="absolute bottom-16"></VRecorder>
-    <VNext class="absolute bottom-12 left-16"
+    <VNext class="absolute bottom-12 right-16"
            @click="exportSvg"></VNext>
     <VTrump v-if="drawSession.step < 4"
-            class="absolute bottom-11 right-16"></VTrump>
+            class="absolute bottom-11 left-16"></VTrump>
     <VMagnifier ref="magnifier"
                 @click="toggleSideBar(); toggleMagnifier();"
                 class="absolute top-8 left-16 border-4 border-yellow-400 rounded-full transition duration-500 ease-in-out transform -translate-y-64"></VMagnifier>

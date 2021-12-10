@@ -11,20 +11,21 @@ export default {
   computed: {
     ...mapState(['drawSession', 'plant']),
     content() {
+      let s = ''
       if (this.plant.data !== {}) {
         if (this.drawSession.step === 0) {
-          return this.plant.data.draw[0]
+          s = this.plant.data.draw[0]
         } else if (this.drawSession.step === 1) {
-          return this.plant.data.draw[0]
+          s = this.plant.data.draw[0]
         } else if (this.drawSession.step === 2) {
-          return this.plant.data.draw[1]
+          s = this.plant.data.draw[1]
         } else if (this.drawSession.step === 3) {
-          return this.plant.data.draw[2]
+          s = this.plant.data.draw[2]
         }
-      } else {
-        return ''
       }
-      // this.$store.commit('setDescription', s)
+
+      this.$store.commit('setDescription', s)
+      return s
       // console.log(this.drawSession.description)
     }
   }

@@ -6,7 +6,7 @@
          class="text"></a>
     </div>
     <div ref="toCanvas"
-         class="z-50 absolute bottom-6 right-9 hidden">
+         class="z-50 absolute bottom-6 right-16 hidden">
       <router-link to="/canvas"
                    class="mx-6">
         <img src='https://raw.githubusercontent.com/chaochaooo/Bio_Sketchbook/main/public/assets/svg/next.svg'>
