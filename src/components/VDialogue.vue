@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-row bg-white rounded-r-2xl"
+  <div class="dialogue-wrapper flex flex-row bg-white rounded-r-2xl"
        ref="test">
     <img src="https://raw.githubusercontent.com/chaochaooo/Bio_Sketchbook/main/public/assets/svg/line.svg"
          class="pl-6">
@@ -64,6 +64,10 @@ export default {
 @font-face {
   font-family: 'FZSJ-LXQWTJW';
   src: url('https://cdn.glitch.me/afbd793d-0eec-495f-95c4-cd3c5b188240%2FFZSJ-LXQWTJW.TTF?v=1638340978154');
+}
+
+.dialogue-wrapper {
+  box-shadow: 0px 4px 30px rgba(108, 108, 108, 0.15);
 }
 
 .dialogue {

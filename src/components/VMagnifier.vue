@@ -1,7 +1,7 @@
 <template>
   <div id="camera"
        @click="handleClick"
-       class="w-48 h-48 overflow-hidden">
+       class="w-72 h-72 overflow-hidden">
     <video ref="video"
            id="video"
            playsinline

@@ -15,7 +15,7 @@
                @click="toggleSideBar"
                @toggleMagnifier="toggleMagnifier"></VDialogue>
     <VContent v-if="drawSession.step < 4"
-              class="absolute bottom-12"></VContent>
+              class="absolute bottom-11"></VContent>
     <VRecorder v-if="drawSession.step === 4"
                class="absolute bottom-16"></VRecorder>
     <VNext class="absolute bottom-12 right-16"
@@ -24,7 +24,7 @@
             class="absolute bottom-11 left-16"></VTrump>
     <VMagnifier ref="magnifier"
                 @click="toggleSideBar(); toggleMagnifier();"
-                class="absolute top-8 left-16 border-4 border-yellow-400 rounded-full transition duration-500 ease-in-out transform -translate-y-64"></VMagnifier>
+                class="absolute top-8 left-20 border-8 border-yellow-400 rounded-full transition duration-500 ease-in-out transform -translate-y-80"></VMagnifier>
   </div>
 </template>
 
@@ -70,7 +70,7 @@ export default {
       this.$refs['sidebar'].$el.classList.toggle('-translate-x-44')
     },
     toggleMagnifier() {
-      this.$refs['magnifier'].$el.classList.toggle('-translate-y-64')
+      this.$refs['magnifier'].$el.classList.toggle('-translate-y-80')
     },
     handleFiles() {
       this.Potrace.loadImageFromUrl(this.image)

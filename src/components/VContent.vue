@@ -40,7 +40,6 @@ export default {
 }
 
 .content-wrapper {
-  height: 4rem /* 64px */;
   max-width: 640px;
   border-radius: 1rem /* 16px */;
   background-color: white;
@@ -49,14 +48,14 @@ export default {
 
 .content {
   font-weight: 600;
-  font-size: 1rem /* 16px */;
-  line-height: 1.5rem /* 24px */;
+  font-size: 1.25rem /* 16px */;
+  line-height: 1.75rem /* 24px */;
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #ffc000;
-  padding: 10px 16px 16px 16px;
+  padding: 10px 16px 8px 16px;
   font-family: 'FZSJ-LXQWTJW', cursive;
 }
 </style>

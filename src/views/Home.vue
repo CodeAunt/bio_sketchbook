@@ -210,6 +210,7 @@ export default {
   text-align: center;
   color: white;
   font-family: 'FZSJ-LXQWTJW', cursive;
+  text-shadow: 1px 2px 0px rgba(255, 192, 0, 1);
 }
 
 .video {

@@ -1,17 +1,17 @@
 <template>
-  <div class="w-full absolute flex flex-row justify-between items-center pl-64 pr-24">
+  <div class="w-full absolute flex flex-row justify-between items-center pr-64 pl-24">
+    <button ref="audio"
+            @click="onAudioRecord()"
+            class="pr-32"> Audio </button>
+    <button ref="play"
+            @click="onAudioPlay()"
+            class="pr-32 hidden"> Play </button>
     <div class="slide-progress-bar">
       <div class="progress-bar"
            id="progress-bar"
            ref="progressBar"></div>
       <!--progress-bar-->
     </div>
-    <button ref="audio"
-            @click="onAudioRecord()"
-            class="pl-32"> Audio </button>
-    <button ref="play"
-            @click="onAudioPlay()"
-            class="pl-32 hidden"> Play </button>
   </div>
 </template>
 

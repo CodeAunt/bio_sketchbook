@@ -1,7 +1,7 @@
 <template>
   <div class="flex items-center gap-x-10">
     <v-popover :disabled="disabledSize"
-               offset="6">
+               offset="16">
       <VIconBtn title="画笔(P)"
                 :active="toolName === 'pencil'"
                 @click="setTool('pencil')"
@@ -16,7 +16,7 @@
       </template>
     </v-popover>
     <v-popover :disabled="disabledSize"
-               offset="6">
+               offset="16">
       <VIconBtn title="刷子(B)"
                 :active="toolName === 'brush'"
                 @click="setTool('brush')"
@@ -90,19 +90,19 @@ export default {
   methods: {
     setTool(toolName) {
       if (toolName === 'pencil') {
-        this.$refs['brush'].$el.classList.remove('-translate-y-2')
+        this.$refs['brush'].$el.classList.remove('translate-y-2')
         this.$refs['brush'].$el.classList.add('-translate-y-5')
         this.$refs['pencil'].$el.classList.remove('-translate-y-5')
-        this.$refs['pencil'].$el.classList.add('-translate-y-2')
+        this.$refs['pencil'].$el.classList.add('translate-y-2')
       } else if (toolName === 'brush') {
-        this.$refs['pencil'].$el.classList.remove('-translate-y-2')
+        this.$refs['pencil'].$el.classList.remove('translate-y-2')
         this.$refs['pencil'].$el.classList.add('-translate-y-5')
         this.$refs['brush'].$el.classList.remove('-translate-y-5')
-        this.$refs['brush'].$el.classList.add('-translate-y-2')
+        this.$refs['brush'].$el.classList.add('translate-y-2')
       } else if (toolName === 'eraser') {
-        this.$refs['brush'].$el.classList.remove('-translate-y-2')
+        this.$refs['brush'].$el.classList.remove('translate-y-2')
         this.$refs['brush'].$el.classList.add('-translate-y-5')
-        this.$refs['pencil'].$el.classList.remove('-translate-y-2')
+        this.$refs['pencil'].$el.classList.remove('translate-y-2')
         this.$refs['pencil'].$el.classList.add('-translate-y-5')
       }
 
@@ -110,10 +110,10 @@ export default {
     }
   },
   mounted() {
-    this.$refs['brush'].$el.classList.remove('-translate-y-2')
+    this.$refs['brush'].$el.classList.remove('translate-y-2')
     this.$refs['brush'].$el.classList.add('-translate-y-5')
     this.$refs['pencil'].$el.classList.remove('-translate-y-5')
-    this.$refs['pencil'].$el.classList.add('-translate-y-2')
+    this.$refs['pencil'].$el.classList.add('translate-y-2')
   }
 }
 </script>
