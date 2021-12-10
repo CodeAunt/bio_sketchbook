@@ -2,7 +2,10 @@
   <div class="w-full absolute flex flex-row justify-between items-center pr-64 pl-24">
     <button ref="audio"
             @click="onAudioRecord()"
-            class="pr-32"> Audio </button>
+            class="pr-32">
+      <img @click="toHome"
+           src="https://raw.githubusercontent.com/chaochaooo/Bio_Sketchbook/main/public/assets/svg/audio.svg">
+    </button>
     <button ref="play"
             @click="onAudioPlay()"
             class="pr-32 hidden"> Play </button>
