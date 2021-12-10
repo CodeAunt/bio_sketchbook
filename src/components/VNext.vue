@@ -1,8 +1,6 @@
 <template>
   <div @click="handleClick">
-    <i>
-      <img src='https://raw.githubusercontent.com/chaochaooo/Bio_Sketchbook/main/public/assets/svg/next.svg'>
-    </i>
+    <img src='https://raw.githubusercontent.com/chaochaooo/Bio_Sketchbook/main/public/assets/svg/next.svg'>
   </div>
 </template>
 

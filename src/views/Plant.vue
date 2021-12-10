@@ -23,9 +23,15 @@
       </div>
 
       <div class="text pl-52 pr-24">
-        <h1 class="text-5xl pb-6"
-            style="color: #14B9F4">{{ plant.data.name }}</h1>
-        <h2 class="text-3xl pb-10 text-gray-900">{{ plant.data.type }}</h2>
+        <div class="flex flex-row justify-start items-center pb-6">
+          <h1 class="text-5xl pr-8"
+              style="color: #14B9F4">{{ plant.data.name }}</h1>
+          <div @click="onAudioPlay()"
+               class="text-5xl pb-2">
+            <img src='https://raw.githubusercontent.com/chaochaooo/Bio_Sketchbook/main/public/assets/svg/trump.svg'>
+          </div>
+        </div>
+        <h2 class="text-3xl pb-4 text-gray-900">{{ plant.data.type }}</h2>
         <VScroll :data="plantData"
                  class="h-72 overflow-hidden">
           <div id="desc"
@@ -46,7 +52,9 @@
 
 <script>
 import { mapState } from 'vuex'
+import VTrump from '@/components/VTrump'
 import VScroll from '@/components/VScroll'
+import speak from '@/utils/voice'
 
 export default {
   data() {
@@ -55,13 +63,22 @@ export default {
     }
   },
   components: {
-    VScroll
+    VScroll,
+    VTrump
   },
-  computed: { ...mapState(['image', 'capture', 'drawing', 'plant']) },
+  computed: { ...mapState(['image', 'capture', 'drawing', 'plant', 'audio']) },
   methods: {
     toHome() {
       this.$store.commit('reset')
       // console.log(this.image)
+    },
+    onAudioPlay() {
+      if (this.audio !== '') {
+        const audio = new Audio(this.audio)
+        audio.play()
+      }
+
+      speak(this.plantData)
     }
   },
   mounted() {
@@ -74,6 +91,7 @@ export default {
     }
 
     this.plantData = desc.innerHTML
+    // console.log(this.plantData)
   }
 }
 </script>

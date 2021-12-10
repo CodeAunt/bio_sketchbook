@@ -16,6 +16,8 @@
                @toggleMagnifier="toggleMagnifier"></VDialogue>
     <VContent v-if="drawSession.step < 4"
               class="absolute bottom-12"></VContent>
+    <VRecorder v-if="drawSession.step === 4"
+               class="absolute bottom-16"></VRecorder>
     <VNext class="absolute bottom-12 left-16"
            @click="exportSvg"></VNext>
     <VTrump v-if="drawSession.step < 4"
@@ -33,6 +35,7 @@ import VContent from '@/components/VContent'
 import VNext from '@/components/VNext'
 import VTrump from '@/components/VTrump'
 import VMagnifier from '@/components/VMagnifier'
+import VRecorder from '@/components/VRecorder'
 import setup from '@/utils/setup'
 import potrace from '@/utils/potrace'
 import { mapState } from 'vuex'
@@ -45,7 +48,8 @@ export default {
     VContent,
     VNext,
     VTrump,
-    VMagnifier
+    VMagnifier,
+    VRecorder
   },
   data() {
     return {

@@ -1,24 +1,31 @@
 <template>
   <div class="others w-screen h-screen">
-    <router-link to="/"
+    <router-link to="/plant"
                  class="absolute top-11 left-14">
-      <img @click="toHome"
-           src="https://raw.githubusercontent.com/chaochaooo/Bio_Sketchbook/main/public/assets/svg/back.svg">
+      <img src="https://raw.githubusercontent.com/chaochaooo/Bio_Sketchbook/main/public/assets/svg/back.svg">
     </router-link>
-    <p class="px-16 pt-44 text text-6xl">类似的植物</p>
+    <p class="px-16 pt-36 text text-6xl">类似的植物</p>
     <div id="others"
-         class="px-16 pt-16 flex flex-row justify-between items-top text text-3xl"></div>
+         class="px-16 pt-8 flex flex-row justify-between items-top text text-3xl"></div>
+    <router-link to="/">
+      <p @click="toHome"
+         style="color: #14B9F4"
+         class="text text-6xl absolute bottom-24 right-24">继续寻找吧 -></p>
+    </router-link>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import axios from 'axios'
 import md5 from '@/utils/md5'
 
 export default {
   data() {
     return {
-      baseUrl: '',
+      similarSpeciesUrl: '',
+      searchUrl: '',
+      id: '',
       plants: [],
       appid: '20211209001023739',
       key: 'XiXks8lt529b7TD_u7eG',
@@ -26,6 +33,7 @@ export default {
       to: 'zh'
     }
   },
+  computed: { ...mapState(['plant']) },
   methods: {
     async translate(text) {
       let url = '/api'
@@ -65,11 +73,21 @@ export default {
     }
   },
   async mounted() {
-    this.baseUrl =
+    this.similarSpeciesUrl =
       'https://api.inaturalist.org/v1/identifications/similar_species?taxon_id='
+    this.searchUrl = 'https://api.inaturalist.org/v1/search?q='
     let that = this
     await axios
-      .get(this.baseUrl + '410380')
+      .get(this.searchUrl + encodeURI(that.plant.name))
+      .then(function (response) {
+        // console.log(response.data.results[0].record.id)
+        that.id = response.data.results[0].record.id
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
+    await axios
+      .get(this.similarSpeciesUrl + that.id)
       .then(function (response) {
         let results = response.data.results
         for (let i = 0; i < results.length; i++) {
@@ -87,19 +105,25 @@ export default {
     let desc = document.getElementById('others')
     for (let i = 0; i < count; i++) {
       let plantWrapper = document.createElement('div')
+      plantWrapper.setAttribute(
+        'class',
+        'flex flex-col justify-between items-center'
+      )
       let name = document.createElement('p')
       name.innerHTML = await this.translate(this.plants[i].name)
+      name.setAttribute('class', 'pt-4')
       let imageWrapper = document.createElement('div')
       let image = document.createElement('img')
       image.setAttribute('src', this.plants[i].image)
       image.setAttribute('style', 'transform: scale(2.2)')
       imageWrapper.setAttribute(
         'class',
-        'w-64 h-64 overflow-hidden border-8 border-yellow-400 rounded-full'
+        'w-80 h-80 overflow-hidden border-8 border-yellow-400 rounded-full'
       )
+
       imageWrapper.appendChild(image)
-      plantWrapper.appendChild(name)
       plantWrapper.appendChild(imageWrapper)
+      plantWrapper.appendChild(name)
       desc.appendChild(plantWrapper)
     }
   }

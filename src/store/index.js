@@ -8,6 +8,7 @@ export default new Vuex.Store({
     image: '',
     capture: '',
     drawing: '',
+    audio: '',
     plant: { name: '', data: {} },
     toolName: null,
     canvasArgs: {
@@ -49,6 +50,9 @@ export default new Vuex.Store({
     },
     setDrawing(state, s) {
       state.drawing = s
+    },
+    setAudio(state, s) {
+      state.audio = s
     },
     setPlant(state, s) {
       state.plant.name = s

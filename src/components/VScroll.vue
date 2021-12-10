@@ -15,9 +15,9 @@ export default {
   },
   props: {
     data: {
-      type: Array,
+      type: String,
       default() {
-        return []
+        return ''
       }
     }
   },
