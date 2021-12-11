@@ -43,21 +43,22 @@ export default {
       let sign = md5(str)
       let encodedText = encodeURIComponent(text)
       await axios
-        .get(
-          url +
-            '?q=' +
-            encodedText +
-            '&from=' +
-            this.from +
-            '&to=' +
-            this.to +
-            '&appid=' +
-            this.appid +
-            '&salt=' +
-            salt +
-            '&sign=' +
-            sign
-        )
+        // .get(
+        //   url +
+        //     '?q=' +
+        //     encodedText +
+        //     '&from=' +
+        //     this.from +
+        //     '&to=' +
+        //     this.to +
+        //     '&appid=' +
+        //     this.appid +
+        //     '&salt=' +
+        //     salt +
+        //     '&sign=' +
+        //     sign
+        // )
+        .get('https://ztodesign.cn:5000/translate?text=' + text)
         .then(function (response) {
           console.log(response)
           text = response.data.trans_result[0].dst

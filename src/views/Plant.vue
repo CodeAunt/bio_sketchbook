@@ -78,7 +78,7 @@ export default {
         audio.play()
       }
 
-      speak(this.plantData)
+      setTimeout(speak(this.plantData), 15000)
     }
   },
   mounted() {
@@ -86,12 +86,10 @@ export default {
     desc.innerHTML = ''
     for (let i = 0; i < this.plant.data.data.length; i++) {
       desc.innerHTML += this.plant.data.data[i]
+      this.plantData += this.plant.data.data[i]
       desc.innerHTML += '</br>'
       desc.innerHTML += '</br>'
     }
-
-    this.plantData = desc.innerHTML
-    // console.log(this.plantData)
   }
 }
 </script>

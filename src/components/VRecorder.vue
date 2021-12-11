@@ -3,8 +3,7 @@
     <button ref="audio"
             @click="onAudioRecord()"
             class="pr-16">
-      <img @click="toHome"
-           src="https://raw.githubusercontent.com/chaochaooo/Bio_Sketchbook/main/public/assets/svg/audio.svg">
+      <img src="https://raw.githubusercontent.com/chaochaooo/Bio_Sketchbook/main/public/assets/svg/audio.svg">
     </button>
     <!-- <button ref="play"
             @click="onAudioPlay()"
@@ -70,7 +69,7 @@ export default {
         if (that.width >= 100) {
           clearInterval(that.interval)
           that.$refs.audio.classList.toggle('invisible')
-        //   that.$refs.play.classList.toggle('hidden')
+          //   that.$refs.play.classList.toggle('hidden')
         } else {
           that.width += 1
           that.progressBar.style.width = that.width + '%'
@@ -81,7 +80,7 @@ export default {
       this.width = 1
       clearInterval(this.interval)
       this.progressBar.style.width = this.width + '%'
-    },
+    }
     // onAudioPlay() {
     //   const audio = new Audio(this.audio)
     //   audio.play()
