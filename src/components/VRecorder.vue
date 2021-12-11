@@ -89,7 +89,7 @@ export default {
     },
     onAudioPlay() {
       this.audio = this.audio.replace('data:;', 'data:audio/wav;')
-      const sound = new Audio(this.audio)
+      const sound = new Audio()
       sound.src = this.audio
       sound.play()
     }
