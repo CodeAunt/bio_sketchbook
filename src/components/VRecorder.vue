@@ -36,7 +36,7 @@ export default {
   //   },
   methods: {
     onAudioRecord() {
-      let timeLength = 15
+      let timeLength = 5
       // record this
       let that = this
       navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
@@ -88,9 +88,9 @@ export default {
       this.progressBar.style.width = this.width + '%'
     },
     onAudioPlay() {
-      this.audio = this.audio.replace('data:;', 'data:audio/wav;')
-      const sound = new Audio()
-      sound.src = this.audio
+      this.audio = this.audio.replace('data:application/octet-stream;', 'data:audio/wav;')
+      // this.audio = this.audio.replace('data:;', 'data:audio/wav;')
+      const sound = new Audio(this.audio)
       sound.play()
     }
   },
