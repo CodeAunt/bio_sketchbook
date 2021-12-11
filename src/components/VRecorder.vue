@@ -50,14 +50,19 @@ export default {
 
         mediaRecorder.addEventListener('stop', () => {
           const audioBlob = new Blob(audioChunks)
-          that.audio = URL.createObjectURL(audioBlob)
+          // that.audio = URL.createObjectURL(audioBlob)
           // that.$store.commit('setAudio', URL.createObjectURL(audioBlob))
-          console.log(that.audio)
+          let reader = new FileReader()
+          reader.readAsDataURL(audioBlob)
+          reader.onload = () => {
+            that.audio = reader.result
+            that.audio = that.audio.replace('data:application/octet-stream;', 'data:audio/wav;')
+          }
         })
 
         setTimeout(() => {
           mediaRecorder.stop()
-        }, timeLength * 1000) // 30s
+        }, timeLength * 1000) // 15s
       })
 
       this.progressBarAnimation(timeLength)
@@ -84,6 +89,7 @@ export default {
       this.progressBar.style.width = this.width + '%'
     },
     onAudioPlay() {
+      console.log(this.audio)
       const audio = new Audio(this.audio)
       audio.play()
     }
