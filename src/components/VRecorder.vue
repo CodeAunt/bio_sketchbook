@@ -1,13 +1,15 @@
 <template>
-  <div class="w-full absolute flex flex-row justify-between items-center pr-48 pl-24">
+  <div class="w-full absolute flex flex-row justify-between items-center px-48">
     <button ref="audio"
             @click="onAudioRecord()"
-            class="pr-16">
+            class="absolute left-16">
       <img src="https://raw.githubusercontent.com/chaochaooo/Bio_Sketchbook/main/public/assets/svg/audio.svg">
     </button>
-    <!-- <button ref="play"
-            @click="onAudioPlay()"
-            class="pr-32 hidden"> Play </button> -->
+    <div ref="play"
+         @click="onAudioPlay()"
+         class="absolute left-16 hidden">
+      <img src='https://raw.githubusercontent.com/chaochaooo/Bio_Sketchbook/main/public/assets/svg/trump.svg'>
+    </div>
     <div class="slide-progress-bar">
       <div class="progress-bar"
            id="progress-bar"
@@ -68,8 +70,8 @@ export default {
       function frame() {
         if (that.width >= 100) {
           clearInterval(that.interval)
-          that.$refs.audio.classList.toggle('invisible')
-          //   that.$refs.play.classList.toggle('hidden')
+          that.$refs.audio.classList.toggle('hidden')
+          that.$refs.play.classList.toggle('hidden')
         } else {
           that.width += 1
           that.progressBar.style.width = that.width + '%'
@@ -80,11 +82,11 @@ export default {
       this.width = 1
       clearInterval(this.interval)
       this.progressBar.style.width = this.width + '%'
+    },
+    onAudioPlay() {
+      const audio = new Audio(this.audio)
+      audio.play()
     }
-    // onAudioPlay() {
-    //   const audio = new Audio(this.audio)
-    //   audio.play()
-    // }
   },
   mounted() {
     this.progressBar = this.$refs.progressBar
@@ -94,7 +96,7 @@ export default {
 
 <style scoped>
 .slide-progress-bar {
-  width: 100%;
+  width: 810px;
   background-color: rgba(255, 237, 181, 80);
   transition: width 10s linear;
   display: inline-block;

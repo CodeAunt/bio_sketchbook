@@ -27,7 +27,7 @@
           <h1 class="text-5xl pr-8"
               style="color: #14B9F4">{{ plant.data.name }}</h1>
           <div @click="onAudioPlay()"
-               class="text-5xl pb-2">
+               class="pb-2">
             <img src='https://raw.githubusercontent.com/chaochaooo/Bio_Sketchbook/main/public/assets/svg/trump.svg'>
           </div>
         </div>
@@ -73,12 +73,7 @@ export default {
       // console.log(this.image)
     },
     onAudioPlay() {
-      if (this.audio !== '') {
-        const audio = new Audio(this.audio)
-        audio.play()
-      }
-
-      setTimeout(speak(this.plantData), 15000)
+      speak(this.plantData)
     }
   },
   mounted() {
