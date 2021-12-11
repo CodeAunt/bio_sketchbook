@@ -25,14 +25,15 @@ import { mapState } from 'vuex'
 export default {
   data() {
     return {
+      audio: '',
       interval: 0,
       width: 1,
       progressBar: ''
     }
   },
-  computed: {
-    ...mapState(['audio'])
-  },
+  //   computed: {
+  //     ...mapState(['audio'])
+  //   },
   methods: {
     onAudioRecord() {
       let timeLength = 15
@@ -49,10 +50,9 @@ export default {
 
         mediaRecorder.addEventListener('stop', () => {
           const audioBlob = new Blob(audioChunks)
-          that.$store.commit('setAudio', URL.createObjectURL(audioBlob))
+          that.audio = URL.createObjectURL(audioBlob)
+          // that.$store.commit('setAudio', URL.createObjectURL(audioBlob))
           console.log(that.audio)
-          const audio = new Audio(that.audio)
-          // audio.play();
         })
 
         setTimeout(() => {
