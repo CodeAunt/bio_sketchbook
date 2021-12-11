@@ -36,7 +36,7 @@ export default {
   //   },
   methods: {
     onAudioRecord() {
-      let timeLength = 5
+      let timeLength = 15
       // record this
       let that = this
       navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
