@@ -56,7 +56,6 @@ export default {
           reader.readAsDataURL(audioBlob)
           reader.onload = () => {
             that.audio = reader.result
-            that.audio = that.audio.replace('data:application/octet-stream;', 'data:audio/wav;')
           }
         })
 
@@ -89,9 +88,10 @@ export default {
       this.progressBar.style.width = this.width + '%'
     },
     onAudioPlay() {
-      console.log(this.audio)
-      const audio = new Audio(this.audio)
-      audio.play()
+      this.audio = this.audio.replace('data:;', 'data:audio/wav;')
+      const sound = new Audio(this.audio)
+      sound.src = this.audio
+      sound.play()
     }
   },
   mounted() {
