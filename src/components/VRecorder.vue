@@ -88,8 +88,12 @@ export default {
       this.progressBar.style.width = this.width + '%'
     },
     onAudioPlay() {
-      this.audio = this.audio.replace('data:application/octet-stream;', 'data:audio/wav;')
+      this.audio = this.audio.replace(
+        'data:application/octet-stream;',
+        'data:audio/wav;'
+      )
       // this.audio = this.audio.replace('data:;', 'data:audio/wav;')
+      console.log(this.audio)
       const sound = new Audio(this.audio)
       sound.play()
     }
