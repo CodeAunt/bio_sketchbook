@@ -94,10 +94,8 @@ export default {
       )
       // this.audio = this.audio.replace('data:;', 'data:audio/wav;')
       console.log(this.audio)
-      const sound = new Audio({
-        volume: 1,
-        src: this.audio
-      })
+      const sound = new Audio(this.audio)
+      sound.volume = 1
       sound.play()
     }
   },
