@@ -37,6 +37,7 @@ export default new Vuex.Store({
       state.image = ''
       state.capture = ''
       state.drawing = ''
+      state.audio = ''
       state.plant.name = ''
       state.plant.data = {}
       state.drawSession.step = 0
