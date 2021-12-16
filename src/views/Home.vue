@@ -19,21 +19,21 @@
       <VCapture @click="onCapture()"
                 class="z-50 absolute top-1/2 right-5 transform -translate-y-1/2"></VCapture>
     </div>
-    <div class="z-40 absolute bottom-0">
-      <img src="https://raw.githubusercontent.com/chaochaooo/Bio_Sketchbook/main/public/assets/png/cover.png">
+    <div class="z-40 layer">
+      <div class="circle"></div>
     </div>
     <div @click="clear()"
          ref="clear"
          class="z-50 absolute w-80 h-80 left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 hidden">
     </div>
     <div ref="canvasWrapper"
-         class="video z-0 overflow-hidden hidden absolute bottom-0">
+         class="z-0 overflow-hidden hidden absolute bottom-0">
       <canvas ref="canvas"
               id="canvas"></canvas>
     </div>
-    <div class="video z-0 overflow-hidden absolute bottom-0">
-      <video width="1194"
-             height="760"
+    <div class="z-0 overflow-hidden absolute bottom-0">
+      <video :width="windowWidth"
+             :height="windowHeight"
              ref="video"
              id="video"
              playsinline
@@ -172,6 +172,8 @@ export default {
       },
       { passive: false }
     )
+    this.windowWidth = document.documentElement.clientWidth
+    this.windowHeight = (this.windowWidth / 4) * 3
     this.video = this.$refs.video
     this.canvas = this.$refs.canvas
     // use this to ensure capture high-resolution image
@@ -179,6 +181,8 @@ export default {
     this.scale = window.devicePixelRatio //2
     this.canvas.width = Math.floor(this.windowWidth)
     this.canvas.height = Math.floor(this.windowHeight)
+    // console.log(this.windowWidth)
+    // console.log(this.windowHeight)
     this.context.scale(this.scale, this.scale)
     let that = this
     this.sketch.onload = function () {
@@ -213,8 +217,22 @@ export default {
   text-shadow: 1px 2px 0px rgba(255, 192, 0, 1);
 }
 
-.video {
-  width: 1194px;
-  height: 760px;
+.layer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.circle {
+  margin: auto auto;
+  width: 75%;
+  height: 70%;
+  border-radius: 120px;
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.2);
 }
 </style>
