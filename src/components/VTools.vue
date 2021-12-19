@@ -1,6 +1,6 @@
 <template>
-  <div class="flex items-center gap-x-10">
-    <VPicker></VPicker>
+  <div class="flex items-center">
+    <VPicker class="pr-10"></VPicker>
     <v-popover :disabled="disabledSize"
                offset="16">
       <VIconBtn title="画笔(P)"
@@ -8,7 +8,7 @@
                 @click="setTool('pencil')"
                 name="pencil"
                 ref="pencil"
-                class="transform -translate-y-5 transition duration-300 ease-in-out"></VIconBtn>
+                class="transform -translate-y-5 transition duration-300 ease-in-out pr-10"></VIconBtn>
       <template slot="popover">
         <div class="v-size-picker">
           <VueSlider v-model="size"
@@ -23,7 +23,7 @@
                 @click="setTool('brush')"
                 name="brush"
                 ref="brush"
-                class="transform -translate-y-5 transition duration-300 ease-in-out"></VIconBtn>
+                class="transform -translate-y-5 transition duration-300 ease-in-out pr-10"></VIconBtn>
       <template slot="popover">
         <div class="v-size-picker">
           <VueSlider v-model="size"
