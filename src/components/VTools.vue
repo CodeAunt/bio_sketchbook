@@ -1,7 +1,12 @@
 <template>
   <div class="flex items-center">
-    <VPicker class="pr-10"></VPicker>
-    <v-popover :disabled="disabledSize"
+    <div style="height:60px;"
+         class="pr-10">
+      <div :style="{ backgroundColor: pencilArgs.color }"
+           class="color w-14 h-14 rounded-full transition duration-300 ease-in-out"></div>
+    </div>
+    <VPicker class="transform pr-10"></VPicker>
+    <v-popover :disabled="true"
                offset="16">
       <VIconBtn title="画笔(P)"
                 :active="toolName === 'pencil'"
@@ -16,7 +21,7 @@
         </div>
       </template>
     </v-popover>
-    <v-popover :disabled="disabledSize"
+    <!-- <v-popover :disabled="disabledSize"
                offset="16">
       <VIconBtn title="刷子(B)"
                 :active="toolName === 'brush'"
@@ -30,13 +35,15 @@
                      :min="1"></VueSlider>
         </div>
       </template>
-    </v-popover>
-    <v-popover :disabled="disabledSize"
+    </v-popover> -->
+    <v-popover :disabled="true"
                offset="16">
       <VIconBtn title="擦除(E)"
                 :active="toolName === 'eraser'"
                 @click="setTool('eraser')"
-                name="eraser"></VIconBtn>
+                name="eraser"
+                ref="eraser"
+                class="transform transition duration-300 ease-in-out"></VIconBtn>
       <template slot="popover">
         <div class="v-size-picker">
           <VueSlider v-model="size"
@@ -52,6 +59,7 @@ import VIconBtn from '@/components/VIconBtn'
 import VueSlider from 'vue-slider-component'
 import VPicker from '@/components/VPicker'
 import 'vue-slider-component/theme/material.css'
+import { mapState } from 'vuex'
 
 export default {
   components: {
@@ -65,6 +73,7 @@ export default {
     }
   },
   computed: {
+    ...mapState(['pencilArgs']),
     toolName() {
       return this.$store.state.toolName
     },
@@ -93,28 +102,31 @@ export default {
   methods: {
     setTool(toolName) {
       if (toolName === 'pencil') {
-        this.$refs['brush'].$el.classList.remove('translate-y-2')
-        this.$refs['brush'].$el.classList.add('-translate-y-5')
+        // this.$refs['brush'].$el.classList.remove('translate-y-2')
+        // this.$refs['brush'].$el.classList.add('-translate-y-5')
         this.$refs['pencil'].$el.classList.remove('-translate-y-5')
         this.$refs['pencil'].$el.classList.add('translate-y-2')
+        this.$refs['eraser'].$el.classList.remove('scale-110')
       } else if (toolName === 'brush') {
         this.$refs['pencil'].$el.classList.remove('translate-y-2')
         this.$refs['pencil'].$el.classList.add('-translate-y-5')
-        this.$refs['brush'].$el.classList.remove('-translate-y-5')
-        this.$refs['brush'].$el.classList.add('translate-y-2')
+        // this.$refs['brush'].$el.classList.remove('-translate-y-5')
+        // this.$refs['brush'].$el.classList.add('translate-y-2')
+        this.$refs['eraser'].$el.classList.remove('scale-110')
       } else if (toolName === 'eraser') {
-        this.$refs['brush'].$el.classList.remove('translate-y-2')
-        this.$refs['brush'].$el.classList.add('-translate-y-5')
+        // this.$refs['brush'].$el.classList.remove('translate-y-2')
+        // this.$refs['brush'].$el.classList.add('-translate-y-5')
         this.$refs['pencil'].$el.classList.remove('translate-y-2')
         this.$refs['pencil'].$el.classList.add('-translate-y-5')
+        this.$refs['eraser'].$el.classList.add('scale-110')
       }
 
       this.$store.commit('setTool', toolName)
     }
   },
   mounted() {
-    this.$refs['brush'].$el.classList.remove('translate-y-2')
-    this.$refs['brush'].$el.classList.add('-translate-y-5')
+    // this.$refs['brush'].$el.classList.remove('translate-y-2')
+    // this.$refs['brush'].$el.classList.add('-translate-y-5')
     this.$refs['pencil'].$el.classList.remove('-translate-y-5')
     this.$refs['pencil'].$el.classList.add('translate-y-2')
   }
@@ -129,5 +141,10 @@ export default {
   padding: 12px;
   box-sizing: border-box;
   width: 110px;
+}
+
+.color {
+  border-width: 6px;
+  border-color: #f1f1f1;
 }
 </style>

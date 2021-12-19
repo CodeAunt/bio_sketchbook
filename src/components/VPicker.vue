@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="flex flex-row items-center">
     <v-popover :disabled="disabledColor"
                offset="16">
       <VIconBtn :disabled="disabledColor"
@@ -7,7 +7,7 @@
                 :color="color"
                 name="color"></VIconBtn>
       <template slot="popover">
-        <CompactPicker v-model="color"></CompactPicker>
+        <SwatchesPicker v-model="color"></SwatchesPicker>
       </template>
     </v-popover>
   </div>
@@ -15,12 +15,15 @@
 
 <script>
 import { Compact as CompactPicker } from 'vue-color'
+import { Swatches as SwatchesPicker } from 'vue-color'
 import VIconBtn from '@/components/VIconBtn'
 import { mapState } from 'vuex'
+
 export default {
   components: {
     VIconBtn,
-    CompactPicker
+    CompactPicker,
+    SwatchesPicker
   },
   data() {
     return {

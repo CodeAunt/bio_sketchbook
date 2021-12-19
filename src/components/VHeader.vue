@@ -1,6 +1,6 @@
 <template>
   <div class="flex items-center justify-center flex-wrap w-96 h-20">
-    <VTools class="transform -translate-y-2"></VTools>
+    <VTools class="transform -translate-y-3"></VTools>
   </div>
 </template>
 
