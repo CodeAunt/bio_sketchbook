@@ -1,6 +1,5 @@
 <template>
   <div class="flex items-center justify-center flex-wrap w-96 h-20">
-    <VPicker class="transform -translate-y-2"></VPicker>
     <VTools class="transform -translate-y-2"></VTools>
   </div>
 </template>
@@ -12,6 +11,7 @@ import VIconBtn from '@/components/VIconBtn'
 import history from '@/utils/history'
 import { clearProject, createLayer } from '@/utils/shared'
 import hotkeys from 'hotkeys-js'
+
 export default {
   components: {
     VTools,

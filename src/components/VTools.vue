@@ -1,5 +1,6 @@
 <template>
   <div class="flex items-center gap-x-10">
+    <VPicker></VPicker>
     <v-popover :disabled="disabledSize"
                offset="16">
       <VIconBtn title="画笔(P)"
@@ -49,12 +50,14 @@
 <script>
 import VIconBtn from '@/components/VIconBtn'
 import VueSlider from 'vue-slider-component'
+import VPicker from '@/components/VPicker'
 import 'vue-slider-component/theme/material.css'
 
 export default {
   components: {
     VIconBtn,
-    VueSlider
+    VueSlider,
+    VPicker
   },
   data() {
     return {

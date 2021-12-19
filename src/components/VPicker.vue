@@ -1,5 +1,5 @@
 <template>
-  <div class="flex pr-10">
+  <div>
     <v-popover :disabled="disabledColor"
                offset="16">
       <VIconBtn :disabled="disabledColor"

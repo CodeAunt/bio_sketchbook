@@ -165,7 +165,7 @@ export default {
 
 .image {
   background-repeat: no-repeat, repeat;
-  background-position: center, top;
+  background-position: top, top;
   background-size: 80%, auto;
 }
 </style>
