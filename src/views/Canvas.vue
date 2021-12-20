@@ -23,7 +23,7 @@
     <VTrump v-if="drawSession.step < 4"
             class="absolute bottom-11 left-16"></VTrump>
     <VMagnifier ref="magnifier"
-                @click="toggleSideBar(); toggleMagnifier();"
+                @click="toggleMagnifier(); toggleSideBar();"
                 class="absolute top-8 left-20 border-8 border-yellow-400 rounded-full transition duration-500 ease-in-out transform -translate-y-80"></VMagnifier>
   </div>
 </template>
@@ -68,6 +68,14 @@ export default {
   methods: {
     toggleSideBar() {
       this.$refs['sidebar'].$el.classList.toggle('-translate-x-44')
+      let sidebarClassList = Array.from(this.$refs['sidebar'].$el.classList)
+      let magnifierClassList = Array.from(this.$refs['sidebar'].$el.classList)
+      if (
+        sidebarClassList.indexOf('-translate-x-44') === -1 &&
+        magnifierClassList.indexOf('-translate-y-80') === -1
+      ) {
+        this.$refs['magnifier'].$el.classList.add('-translate-y-80')
+      }
     },
     toggleMagnifier() {
       this.$refs['magnifier'].$el.classList.toggle('-translate-y-80')
