@@ -32,11 +32,7 @@ export default {
       } else if (this.drawSession.step === 3) {
         return '小朋友! 周围环境有没有其他植物或者小昆虫？你可以将它们补充到画面中吗？'
       } else if (this.drawSession.step === 4) {
-        return '小朋友! 发挥想象力，最后来丰富一下你的画面吧！'
-      } else if (this.drawSession.step === 5) {
         return '小朋友! 听听看，我的周围有什么声音？你可以把它录下来吗？'
-      } else if (this.drawSession.step === 6) {
-        return '太棒了！你已经完成了这次的写生，点击下一步查看我的完整信息吧！'
       } else {
         return ''
       }

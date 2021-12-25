@@ -62,7 +62,7 @@ export default new Vuex.Store({
       state.plant.data = s
     },
     setStep(state) {
-      if (state.drawSession.step < 7) {
+      if (state.drawSession.step < 5) {
         state.drawSession.step++
       }
     },
