@@ -6,7 +6,7 @@
            class="color w-14 h-14 rounded-full transition duration-300 ease-in-out"></div>
     </div>
     <VPicker class="transform pr-10"></VPicker>
-    <v-popover :disabled="true"
+    <v-popover :disabled="disabledSize"
                offset="16">
       <VIconBtn title="画笔(P)"
                 :active="toolName === 'pencil'"
@@ -36,7 +36,7 @@
         </div>
       </template>
     </v-popover> -->
-    <v-popover :disabled="true"
+    <v-popover :disabled="disabledSize"
                offset="16">
       <VIconBtn title="擦除(E)"
                 :active="toolName === 'eraser'"
